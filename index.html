@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link href="./css/vendors/bootstrap.min.css" />
+    <script src="./js/vendors/jquery.min.js"></script>
+    <script src="./js/vendors/bootstrap.min.js"></script>
+    <script src="./js/vendors/vue.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" id="game">
+                <form class="form-inline">
+                    <div class="col-xs-12">
+                        <i class="col-xs-2 pull-right" v-text="helps"> </i>
+                        <button type="button" class="btn btn-primary col-xs-4 pull-right" :disabled="disabledHelp" @click="help">
+                            Βοήθεια
+                        </button>
+                    </div>
+                    <div class="col-xs-12">
+                        <span v-text="leftPart"></span>
+                        <letter-component inline-template ref="letters" v-for="letter in letters" :value="letter">
+                            <span class="input-group" @focus="focus">
+                                <i v-if="helpHext" v-text="helpHext"></i>
+                                <input type="text" v-model="userInput" maxlength="1" class="form-control"
+                                 @keyup.prevent="keyup" @keydown.prevent="keydown" />
+                            </span>
+                        </letter-component>
+                        <span v-text="rightPart"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="./js/pages/index.js"></script>
+</body>
+
+</html>
